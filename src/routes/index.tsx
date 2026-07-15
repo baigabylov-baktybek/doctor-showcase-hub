@@ -123,9 +123,11 @@ function Landing() {
               doctors.map((d) => {
                 const url = doctorPhotoUrl(d.photo_url);
                 return (
-                  <article
+                  <Link
                     key={d.id}
-                    className="group overflow-hidden rounded-2xl bg-card"
+                    to="/doctors/$id"
+                    params={{ id: d.id }}
+                    className="group block overflow-hidden rounded-2xl bg-card transition-transform hover:-translate-y-1"
                     style={{ boxShadow: "var(--shadow-card)" }}
                   >
                     <div className="aspect-[4/5] overflow-hidden bg-muted">
@@ -150,8 +152,9 @@ function Landing() {
                       {d.bio ? (
                         <p className="mt-3 line-clamp-3 text-sm text-muted-foreground">{d.bio}</p>
                       ) : null}
+                      <span className="mt-4 inline-block text-sm font-medium text-primary">Подробнее →</span>
                     </div>
-                  </article>
+                  </Link>
                 );
               })
             )}
